@@ -1,0 +1,83 @@
+  import { CustomSinCurve } from './helpers/CustomSinCurve'
+  import { THREE, ExtendedMesh, ExtendedObject3D } from 'enable3d'
+
+export class CustomCurveObstacle  {
+  constructor( {ctx: ctx, o: o} ) {
+  console.log("customCurveObstacle")
+
+
+  const path = new CustomSinCurve( 10 );
+  const geometry = new THREE.TubeGeometry( path, 20, 2, 8, false );
+  const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+  const tube = new ExtendedMesh( geometry, material );
+  let object = new ExtendedObject3D()
+  object.scale.set(.1,.1,.1)
+  object.position.set(-5, .2,0)
+  object.rotation.set(Math.PI/2,0,Math.PI/2)
+  object.add(tube)
+  ctx.scene.add(object)
+  ctx.physics.add.existing(object, {shape: "concave"})
+  object.body.setCollisionFlags(2)
+  object.name = "tube"
+  object.mass = 2
+
+  const path2 = new CustomSinCurve(   );
+  const geometry2 = new THREE.TubeGeometry( path2, 20, 1, 8, false );
+  // const material2 = new THREE.MeshBasicMaterial( { lambert: { color: 'green', transparent: true, opacity: 0.5 } );
+  const tube2 = new ExtendedMesh( geometry2, ctx.colors["mat1"] );
+  let object2 = new ExtendedObject3D()
+  // object2.scale.set(.1,.1,.1)
+  object2.position.set(4,0.5,2)
+  object2.rotation.set(Math.PI/2,0,Math.PI/2)
+  object2.add(tube2)
+  ctx.scene.add(object2)
+  ctx.physics.add.existing(object2, {shape: "concave"})
+  object2.body.setCollisionFlags(2)
+  object2.name = "tube2"
+  object2.mass = 2
+
+
+  var tpath = [ new THREE.Vector3(-4, 0, -7),
+    // new THREE.Vector3(-1, 1.2, 0),
+    new THREE.Vector3(2, 0, -2),
+    // new THREE.Vector3(1, 1.2, 0),
+    new THREE.Vector3(3, 0, 5)
+  ]
+  var pathBase = new THREE.CatmullRomCurve3(tpath);
+
+
+  // var tgeometry = new THREE.TubeGeometry(pathBase, 20, 2, 8, false );
+  // var tmaterial = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+  // var tmesh = new THREE.Mesh( tgeometry, tmaterial );
+  // ctx.scene.add(tmesh);
+
+  const geometry3 = new THREE.TubeGeometry( pathBase, 20, .5, 8, false )
+  // // const material2 = new THREE.MeshBasicMaterial( { lambert: { color: 'green', transparent: true, opacity: 0.5 } );
+  const tube3 = new ExtendedMesh( geometry3, ctx.colors["mat2"] );
+  let object3 = new ExtendedObject3D()
+  object3.scale.set(.5,.5,.5)
+  object3.position.set(0,.5,2)
+  // object3.rotation.set(Math.PI/2,0,Math.PI/2)
+  object3.add(tube3)
+  ctx.scene.add(object3)
+  ctx.physics.add.existing(object3, {shape: "concave"})
+  object3.body.setCollisionFlags(2)
+  object3.name = "tube3"
+  object3.mass = 2
+
+
+
+
+  }
+
+  // getPoint( t, optionalTarget = new THREE.Vector3() ) {
+  //
+  //   const tx = t * 3 - 1.5;
+  //   const ty = Math.sin( 2 * Math.PI * t );
+  //   const tz = 0;
+  //
+  //   return optionalTarget.set( tx, ty, tz ).multiplyScalar( this.scale );
+  //
+  // }
+
+}

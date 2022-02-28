@@ -1,0 +1,63 @@
+// import the UMD bundle enable3d.framework.min.js
+// or from npm enable3d
+import { Project, Scene3D, PhysicsLoader } from 'enable3d'
+
+class MainScene extends Scene3D {
+  constructor() {
+    super('MainScene')
+  }
+
+  async init() {
+    this.renderer.setPixelRatio(1)
+    this.renderer.setSize(window.innerWidth, window.innerHeight)
+  }
+
+  async preload() {
+    // preload your assets here
+  }
+
+  async create() {
+    // set up scene (light, ground, grid, sky, orbitControls)
+    this.warpSpeed()
+    // enable physics debug
+    this.physics.debug.enable()
+
+    // position camera
+    this.camera.position.set(0, 15, 25)
+
+
+
+
+  // blue box (without physics)
+  this.box = this.add.box({ y: 2 }, { lambert: { color: 'deepskyblue' } })
+
+
+
+  let box1 = this.physics.add.box({}, {phong: {color: 'green'}})
+  let sphere1 = this.physics.add.sphere({y: 5}, {lambert: {color: 'yellow'}})
+  // pink box (with physics)
+  this.physics.add.box({ y: 10 }, { lambert: { color: 'hotpink' } })
+  let sphere2 = this.physics.add.sphere({y: 15}, {lambert: {color: 'yellow'}})
+
+  let wallLeft = this.physics.add.box(  { x: -10, width: 1, height: 1, depth: 21, mass: 2, collisionFlags: 0 },
+{ lambert: { color: 'red', transparent: true, opacity: 0.5 } })
+  let wallRight = this.physics.add.box({x:10}, {phong: {color: 'blue'}})
+  let wallTop = this.physics.add.box({z:10}, {phong: {color: 'blue'}})
+  let wallBottom = this.physics.add.box({z:-10}, {phong: {color: 'blue'}})
+
+
+}
+
+
+
+  update() {
+    this.box.rotation.x += 0.01
+    this.box.rotation.y += 0.01
+  }
+}
+
+// set your project configs
+const config = { scenes: [MainScene] }
+
+// load the ammo.js file from the /lib folder and start the project
+PhysicsLoader('/lib', () => new Project(config))

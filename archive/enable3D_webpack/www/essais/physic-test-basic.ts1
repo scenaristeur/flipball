@@ -1,0 +1,35 @@
+import { PhysicsLoader } from "@enable3d/ammo-physics"
+import { Project, Scene3D } from "enable3d";
+
+
+export class PhysicTest extends Scene3D {
+  async init (){
+    this.renderer.setPixelRatio(1)
+    this.renderer.setSize(window.innerWidth, window.innerHeight)
+  }
+
+async create(){
+this.warpSpeed()
+
+// enable physics debug
+   this.physics.debug.enable()
+
+   // position camera
+   this.camera.position.set(10, 10, 20)
+
+   // blue box (without physics)
+   this.box = this.add.box({ y: 2 }, { lambert: { color: 'deepskyblue' } })
+
+   // pink box (with physics)
+   this.physics.add.box({ y: 10 }, { lambert: { color: 'hotpink' } })
+}
+
+update() {
+  this.box.rotation.x += 0.01
+  this.box.rotation.y += 0.01
+}
+
+}
+
+const config = { scenes: [PhysicTest], antialias: true}
+PhysicsLoader('/ammo', () => new Project(config))

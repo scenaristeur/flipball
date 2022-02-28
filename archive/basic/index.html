@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>My first three.js app</title>
+  <style>
+    body { margin: 0; }
+  </style>
+</head>
+<body>
+  <script src="js/three.min.js"></script>
+  <script src="js/OrbitControls.js"></script>
+  <script>
+    // Our Javascript will go here.
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+
+
+    const geometry = new THREE.BoxGeometry(8,16,1);
+    const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+    const table = new THREE.Mesh( geometry, material );
+    table.rotation.x = -1;
+    scene.add( table );
+
+
+    //Makes a new cylinder with
+    // - a circle of radius 5 on top (1st parameter)
+    // - a circle of radius 5 on the bottom (2nd parameter)
+    // - a height of 20 (3rd parameter)
+    // - 32 segments around its circumference (4th parameter)
+    var geometryCyl = new THREE.CylinderGeometry( .1, .1, 1, 8 );
+    //Yellow
+    var materialCyl = new THREE.MeshBasicMaterial( {color: 0xffff00} );
+    var cylinderL = new THREE.Mesh( geometryCyl, materialCyl );
+    var cylinderR = new THREE.Mesh( geometryCyl, materialCyl );
+    table.add( cylinderL );
+    table.add( cylinderR );
+    cylinderL.position.x = -3
+    cylinderL.position.y = -7
+    cylinderL.position.z = 1
+    cylinderL.rotation.x = THREE.Math.degToRad(90)
+    // cylinderR.position = new THREE.Vector3(-1, -5, 1)
+    cylinderR.position.x = 3
+    cylinderR.position.y = -7
+    cylinderR.position.z = 1
+    cylinderR.rotation.x = THREE.Math.degToRad(90)
+
+
+    const geometryFlip = new THREE.BoxGeometry(3,.5,.5);
+    const materialFlip = new THREE.MeshBasicMaterial( { color: 0xff0000 } );
+    const flipL = new THREE.Mesh( geometryFlip, materialFlip );
+    const flipR = new THREE.Mesh( geometryFlip, materialFlip );
+    cylinderL.add( flipL )
+    cylinderR.add( flipR )
+
+    flipL.position.x = .6
+    // flipL.position.y = -5
+    // flipL.position.z = 1
+
+    flipR.position.x = -.6
+    // flipR.position.y = -5
+    // flipR.position.z = 1
+
+    camera.position.y = 7;
+    camera.position.z = 15;
+
+    controls = new THREE.OrbitControls( camera );
+    controls.target.y = 2;
+
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize( window.innerWidth, window.innerHeight );
+    document.body.appendChild( renderer.domElement );
+
+    function animate() {
+      requestAnimationFrame( animate );
+
+      // table.rotation.x += 0.01;
+      // table.rotation.y += 0.01;
+
+
+
+      renderer.render( scene, camera );
+    }
+    animate();
+
+    window.addEventListener('keydown', handleKeyDown, false);
+    window.addEventListener('keyup', handleKeyUp, false);
+
+
+
+
+    function handleKeyDown(event) {
+      console.log(event.keyCode)
+
+      if(event.keyCode == 32){
+        // console.log(flipL)
+        console.log(camera)
+      }
+
+      if (event.keyCode === 87) { //87 is "w", 161 is !
+      //window.isBDown = true;
+      console.log("left flip")
+      console.log("rotation https://stackoverflow.com/questions/42812861/three-js-pivot-point/42866733#42866733")
+      rotateAboutPoint(flipL, new THREE.Vector3(0, 0, 0), new THREE.Vector3(0, 1, 0), THREE.Math.degToRad(30))
+    }
+    if (event.keyCode === 161) {
+      //window.isBDown = false;
+      console.log("right flip")
+      rotateAboutPoint(flipR, new THREE.Vector3(0, 0, 0), new THREE.Vector3(0, 1, 0), THREE.Math.degToRad(-30))
+    }
+  }
+
+  function handleKeyUp(event) {
+    console.log(event.keyCode)
+    if (event.keyCode === 87) {
+      //window.isBDown = false;
+      console.log("left back")
+      rotateAboutPoint(flipL, new THREE.Vector3(0, 0, 0), new THREE.Vector3(0, 1, 0), THREE.Math.degToRad(-30))
+    }
+    if (event.keyCode === 161) {
+      //window.isBDown = false;
+      console.log("right back")
+      rotateAboutPoint(flipR, new THREE.Vector3(0, 0, 0), new THREE.Vector3(0, 1, 0), THREE.Math.degToRad(30))
+    }
+  }
+
+
+  // obj - your object (THREE.Object3D or derived)
+  // point - the point of rotation (THREE.Vector3)
+  // axis - the axis of rotation (normalized THREE.Vector3)
+  // theta - radian value of rotation
+  // pointIsWorld - boolean indicating the point is in world coordinates (default = false)
+  function rotateAboutPoint(obj, point, axis, theta, pointIsWorld){
+    pointIsWorld = (pointIsWorld === undefined)? false : pointIsWorld;
+
+    if(pointIsWorld){
+      obj.parent.localToWorld(obj.position); // compensate for world coordinate
+    }
+
+    obj.position.sub(point); // remove the offset
+    obj.position.applyAxisAngle(axis, theta); // rotate the POSITION
+    obj.position.add(point); // re-add the offset
+
+    if(pointIsWorld){
+      obj.parent.worldToLocal(obj.position); // undo world coordinates compensation
+    }
+
+    obj.rotateOnAxis(axis, theta); // rotate the OBJECT
+  }
+</script>
+</body>
+</html>
