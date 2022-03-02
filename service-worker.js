@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/flipball/precache-manifest.cb43e8d7a1b3cb468bf49de85ead5ac1.js"
+  "/flipball/precache-manifest.ec5919eece2cec42eb23a955995a0649.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "flipball"});

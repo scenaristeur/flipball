@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "96af2098007a206af8c5",
+    "revision": "b629842f33639ac88a6d",
     "url": "/flipball/css/app.5c9713c3.css"
   },
   {
-    "revision": "ec483f20eb45dc2241a3ec94e30e4aaa",
+    "revision": "3a1b295ea3a52cad8248dcbd68e80bd0",
     "url": "/flipball/index.html"
   },
   {
-    "revision": "a0dcf27620e6e5704b90",
-    "url": "/flipball/js/about.b35c935a.js"
+    "revision": "f1af939163318913a6a5",
+    "url": "/flipball/js/about.827cf357.js"
   },
   {
-    "revision": "96af2098007a206af8c5",
-    "url": "/flipball/js/app.f22c32bb.js"
+    "revision": "b629842f33639ac88a6d",
+    "url": "/flipball/js/app.d289b0e8.js"
   },
   {
     "revision": "c03b41032024f679689a",
