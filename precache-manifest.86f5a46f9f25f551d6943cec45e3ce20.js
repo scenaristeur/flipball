@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f98a29b26bc7a95fbd8d",
+    "revision": "f73b5fb9dfb5598d3c4c",
     "url": "/flipball/css/app.5c9713c3.css"
   },
   {
-    "revision": "baf70b579eee0e546ef0bfcbcc3c9c30",
+    "revision": "d720f13be1ff4b2c83ee2eb56dcc2a5d",
     "url": "/flipball/index.html"
   },
   {
-    "revision": "d1a79d8d586be6ffe744",
-    "url": "/flipball/js/about.d2b0b79b.js"
+    "revision": "b865806233f5e9cea08d",
+    "url": "/flipball/js/about.0ef103f4.js"
   },
   {
-    "revision": "f98a29b26bc7a95fbd8d",
-    "url": "/flipball/js/app.bbd363e1.js"
+    "revision": "f73b5fb9dfb5598d3c4c",
+    "url": "/flipball/js/app.4a05712e.js"
   },
   {
-    "revision": "683fcdc0ab49d26de7ad",
-    "url": "/flipball/js/chunk-12212738.f2e744f5.js"
+    "revision": "c03b41032024f679689a",
+    "url": "/flipball/js/chunk-12212738.ffbf88d3.js"
   },
   {
     "revision": "09a67055700bd8e326ce",
@@ -46,5 +46,9 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "b6216d61c03e6ce0c9aea6ca7808f7ca",
     "url": "/flipball/robots.txt"
+  },
+  {
+    "revision": "8ec5a4d2a6abf875bee66e2e922a59bc",
+    "url": "/flipball/stl/rubber.stl"
   }
 ]);
