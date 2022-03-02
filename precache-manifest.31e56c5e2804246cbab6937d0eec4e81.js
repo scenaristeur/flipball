@@ -1,10 +1,14 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "1405c8d55e58f16d04d3",
+    "revision": "9360427938896b2581d5",
     "url": "/flipball/css/app.5c9713c3.css"
   },
   {
-    "revision": "f6cf4d5cca28ea755ab20219a492e6b8",
+    "revision": "00563e7132387e352f043c2259bda093",
+    "url": "/flipball/fonts/optimer_bold.typeface.json"
+  },
+  {
+    "revision": "fff1ed49db9ee5e13535e4899b917039",
     "url": "/flipball/index.html"
   },
   {
@@ -12,12 +16,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/flipball/js/about.eb704b7c.js"
   },
   {
-    "revision": "1405c8d55e58f16d04d3",
-    "url": "/flipball/js/app.18c6fcc4.js"
+    "revision": "9360427938896b2581d5",
+    "url": "/flipball/js/app.630a6f0d.js"
   },
   {
-    "revision": "c03b41032024f679689a",
-    "url": "/flipball/js/chunk-12212738.ffbf88d3.js"
+    "revision": "95a9b4e33629912890cc",
+    "url": "/flipball/js/chunk-12212738.fbf57d60.js"
   },
   {
     "revision": "09a67055700bd8e326ce",
