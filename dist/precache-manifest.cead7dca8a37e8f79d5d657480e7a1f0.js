@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "9360427938896b2581d5",
+    "revision": "c7c5ab3cfd1c194513d5",
     "url": "/flipball/css/app.5c9713c3.css"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/flipball/fonts/optimer_bold.typeface.json"
   },
   {
-    "revision": "fff1ed49db9ee5e13535e4899b917039",
+    "revision": "f850485da5ff9945b22568d3eeb268b2",
     "url": "/flipball/index.html"
   },
   {
@@ -16,16 +16,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/flipball/js/about.eb704b7c.js"
   },
   {
-    "revision": "9360427938896b2581d5",
-    "url": "/flipball/js/app.630a6f0d.js"
+    "revision": "c7c5ab3cfd1c194513d5",
+    "url": "/flipball/js/app.bdc4b324.js"
   },
   {
-    "revision": "95a9b4e33629912890cc",
-    "url": "/flipball/js/chunk-12212738.fbf57d60.js"
+    "revision": "a956ca10a1e6a8fd803a",
+    "url": "/flipball/js/chunk-12212738.ba8814df.js"
   },
   {
-    "revision": "09a67055700bd8e326ce",
-    "url": "/flipball/js/chunk-2d207f81.b893f7f4.js"
+    "revision": "e0cdf286249d21a1a5fd",
+    "url": "/flipball/js/chunk-2d207f81.0dd07806.js"
   },
   {
     "revision": "79ba59c9038d8ff16f53",

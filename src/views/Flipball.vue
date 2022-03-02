@@ -20,8 +20,8 @@ export default {
         scenes: [MainScene],
         gravity: { x: 0, y: -9.81, z: 4},
         antialias: true,
-        maxSubSteps: 20, //10
-        fixedTimeStep: 1 / 360, // 1/240
+        maxSubSteps: 10, //20, //10
+        fixedTimeStep: 1/240, //1 / 360, // 1/240
       }
     ))
   }

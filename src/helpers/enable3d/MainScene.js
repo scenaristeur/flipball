@@ -26,7 +26,7 @@ const stats = Stats()
 let play = new Play()
 let ready = false
 let base_url = process.env.BASE_URL
-const rotationSpeed= .4
+const rotationSpeed= .3
 const loader = new STLLoader()
 
 let text = 'three.js',
@@ -35,7 +35,7 @@ fontName = 'optimer', // helvetiker, optimer, gentilis, droid sans, droid serif
 fontWeight = 'bold'; // normal bold
 let group, textMesh1, textMesh2, textGeo, materials;
 group = new THREE.Group();
-group.position.y = 3;
+group.position.y = -2;
 group.position.z = -10;
 // const loader2 = new GLTFLoader();
 
@@ -84,6 +84,7 @@ export class MainScene extends Scene3D {
     }
     this.colors = new Colors(this)
     this.ball = null
+    this.score = 0
   }
 
   async preload() {
@@ -99,6 +100,7 @@ export class MainScene extends Scene3D {
   }
 
   create() {
+
     console.log('create')
 
     // set up scene (light, ground, grid, sky, orbitControls)
@@ -137,7 +139,13 @@ export class MainScene extends Scene3D {
   }
   update() {
     let actions = play.actions
-    let ms = this
+
+    if(text != " "+this.score ){
+      text = " "+this.score
+      this.refreshText()
+      console.log("text", text)
+    }
+
 
     if (this.ball != null){
       if (this.ball.position.y < 0){
@@ -154,8 +162,7 @@ export class MainScene extends Scene3D {
 
       if(batL != undefined){
         if (actions.l == 1  || actions.tapeLeft == 1){
-text = "left bat"
-ms.refreshText()
+
           if(batL.rotation.y <= Math.PI/6){
             batL.rotation.y += rotationSpeed
             batL.body.needUpdate = true
@@ -170,8 +177,6 @@ ms.refreshText()
 
       if(batR != undefined){
         if (actions.r == 1 || actions.tapeRight == 1){
-          text = "right bat"
-          ms.refreshText()
           if(batR.rotation.y >= -Math.PI/6){
             batR.rotation.y -= rotationSpeed
             batR.body.needUpdate = true
@@ -204,26 +209,26 @@ ms.refreshText()
 
   createText() {
     //https://threejs.org/examples/#webgl_geometry_text
-    let hover = 3
+    let hover = 0
     let mirror = false
-    let height = 2
+    let height = 1
     textGeo = new TextGeometry( text, {
 
       font: font,
 
-      size: 7,
+      size: 2,
       height: height,
       curveSegments: 4,
 
-      bevelThickness: 2,
-      bevelSize: 1.5,
+      bevelThickness: .5,
+      bevelSize: .5,
       bevelEnabled: true
 
     } );
 
     materials = [
       new THREE.MeshPhongMaterial( { color: 0xffffff, flatShading: true } ), // front
-      new THREE.MeshPhongMaterial( { color: 0xffffff } ) // side
+      new THREE.MeshPhongMaterial( { color: 0x000000 } ) // side
     ];
 
     textGeo.computeBoundingBox();

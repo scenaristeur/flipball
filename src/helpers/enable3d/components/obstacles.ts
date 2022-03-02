@@ -58,6 +58,10 @@ export class Obstacles  {
           // console.log(otherObject, event)
           if (event == "start"){
             console.log("collision", otherObject.uuid)
+            if(o.onCollision != undefined){
+            ctx.score += o.onCollision.score
+            console.log(ctx.score)
+          }
             // score+=1
             // loadText("Score : "+score)
             // audio.play();
@@ -65,5 +69,5 @@ export class Obstacles  {
         }
       })
     }
-      }
+  }
 }
