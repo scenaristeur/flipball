@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c4bd135a6e99f0238b18",
+    "revision": "96af2098007a206af8c5",
     "url": "/flipball/css/app.5c9713c3.css"
   },
   {
-    "revision": "390fd3be08ebbec7eea7ef656b13c54d",
+    "revision": "ec483f20eb45dc2241a3ec94e30e4aaa",
     "url": "/flipball/index.html"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/flipball/js/about.b35c935a.js"
   },
   {
-    "revision": "c4bd135a6e99f0238b18",
-    "url": "/flipball/js/app.36d0186d.js"
+    "revision": "96af2098007a206af8c5",
+    "url": "/flipball/js/app.f22c32bb.js"
   },
   {
     "revision": "c03b41032024f679689a",
