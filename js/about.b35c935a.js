@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["about"],{f820:function(t,e,a){"use strict";a.r(e);var n=function(){var t=this,e=t.$createElement;t._self._c;return t._m(0)},s=[function(){var t=this,e=t.$createElement,a=t._self._c||e;return a("div",{staticClass:"about"},[a("h1",[t._v("This is an about page")]),a("a",{attrs:{href:"https://github.com/scenaristeur/flipball",target:"_blank"}},[t._v("Source scenaristeur github")])])}],r=a("2877"),u={},i=Object(r["a"])(u,n,s,!1,null,null,null);e["default"]=i.exports}}]);
+//# sourceMappingURL=about.b35c935a.js.map
