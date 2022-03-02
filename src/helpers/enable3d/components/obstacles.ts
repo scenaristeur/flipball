@@ -57,7 +57,7 @@ export class Obstacles  {
           // console.log('blueBox collided with another object than the ground')
           // console.log(otherObject, event)
           if (event == "start"){
-            console.log("collision", otherObject)
+            console.log("collision", otherObject.uuid)
             // score+=1
             // loadText("Score : "+score)
             // audio.play();

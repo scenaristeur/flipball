@@ -1,12 +1,41 @@
 import { Keyboard } from '@yandeu/keyboard'
 const keyboard = new Keyboard()
-
+import { Tap } from '@yandeu/tap'
+const el = document.getElementById('myCanvas')
+const tap = new Tap(el)
 
 export class Play  {
   // actions
   constructor( ) {
     console.log("play")
     this.actions = {l: 0, r: 0, u: 0, d: 0 }
+
+
+
+    tap.on.down(({ position }) => {
+      //console.log('down', position, event)
+
+
+      if (position.y < window.innerHeight/2){
+        this.actions.tapeUp = 1
+      }else if(position.y > window.innerHeight/2){
+        if(position.x < window.innerWidth /2){
+          this.actions.tapeLeft = 1
+        }else{
+          this.actions.tapeRight = 1
+        }
+      }
+
+    })
+
+    tap.on.up(() => {
+      //  console.log('up:', position, event)
+      this.actions.tapeRight = 0
+      this.actions.tapeLeft = 0
+
+    })
+
+
     keyboard.watch.down( keyCode => {
       switch (keyCode) {
         case 'ArrowLeft':

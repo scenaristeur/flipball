@@ -1,4 +1,4 @@
-let debug = true
+let debug = false
 let statistiques = true
 
 
@@ -22,7 +22,8 @@ import { Ball } from './components/ball.ts'
 const stats = Stats()
 let play = new Play()
 let ready = false
-const rotationSpeed= .2
+let base_url = process.env.BASE_URL
+const rotationSpeed= .4
 const loader = new STLLoader()
 
 // const loader2 = new GLTFLoader();
@@ -131,7 +132,7 @@ export class MainScene extends Scene3D {
       let batR = this.scene.getObjectByName("bat_right")
 
       if(batL != undefined){
-        if (actions.l == 1){
+        if (actions.l == 1  || actions.tapeLeft == 1){
 
           if(batL.rotation.y <= Math.PI/6){
             batL.rotation.y += rotationSpeed
@@ -146,7 +147,7 @@ export class MainScene extends Scene3D {
       }
 
       if(batR != undefined){
-        if (actions.r == 1){
+        if (actions.r == 1 || actions.tapeRight == 1){
           if(batR.rotation.y >= -Math.PI/6){
             batR.rotation.y -= rotationSpeed
             batR.body.needUpdate = true
@@ -158,11 +159,18 @@ export class MainScene extends Scene3D {
           }
         }
       }
+
+
       if( actions.u == 1){
         new Ball(this)
       }
       if( actions.d == 1){
         this.launcher.launch()
+      }
+
+      if (actions.tapeUp == 1){
+        this.launcher.launch()
+        setTimeout(() => {  actions.tapeUp = 0; }, 1000);
       }
     }
     if (statistiques){
@@ -206,10 +214,12 @@ export class MainScene extends Scene3D {
 
     for (let p of parts){
       console.log("loading", p.name)
-
+      let path = base_url+"stl/"+p.file+'.stl'
+      // console.log(path)
       loader.load(
-        '@/helpers/enable3d/components/stl/'+p.file+'.stl',
+        path,
         function (geometry) {
+
           const part = new ExtendedMesh(geometry, ctx.colors["mat1"])
 
           let object = new ExtendedObject3D()
