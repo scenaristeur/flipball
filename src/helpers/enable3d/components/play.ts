@@ -10,11 +10,15 @@ export class Play  {
     console.log("play")
     this.actions = {l: 0, r: 0, u: 0, d: 0 }
 
+    window.addEventListener("keydown", function(e) {
+        if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
+            e.preventDefault();
+        }
+    }, false);
 
-
-    tap.on.down(({ position }) => {
+    tap.on.down(({ position, event }) => {
       //console.log('down', position, event)
-
+      event.preventDefault()
 
       if (position.y < window.innerHeight/2){
         this.actions.tapeUp = 1

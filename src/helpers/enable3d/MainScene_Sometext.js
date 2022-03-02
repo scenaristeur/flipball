@@ -1,13 +1,11 @@
-let debug = false
+let debug = true
 let statistiques = true
 
 
-import {  Scene3D, THREE,  ExtendedObject3D,  ExtendedMesh,/* CatmullRomCurve3*/   } from 'enable3d'
+import {  Scene3D, /*THREE,*/  ExtendedObject3D,  ExtendedMesh,/* CatmullRomCurve3*/ } from 'enable3d'
 import Stats from 'three/examples/jsm/libs/stats.module'
 import { STLLoader } from 'three/examples/jsm/loaders/STLLoader'
-import { FontLoader } from 'three/examples/jsm/loaders/FontLoader'
-import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js';
-
+import { FLAT } from 'enable3d'
 // import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 
@@ -29,14 +27,6 @@ let base_url = process.env.BASE_URL
 const rotationSpeed= .4
 const loader = new STLLoader()
 
-let text = 'three.js',
-font = undefined,
-fontName = 'optimer', // helvetiker, optimer, gentilis, droid sans, droid serif
-fontWeight = 'bold'; // normal bold
-let group, textMesh1, textMesh2, textGeo, materials;
-group = new THREE.Group();
-group.position.y = 3;
-group.position.z = -10;
 // const loader2 = new GLTFLoader();
 
 
@@ -98,7 +88,7 @@ export class MainScene extends Scene3D {
     // loadParts(this, flipper_parts)
   }
 
-  create() {
+  async create() {
     console.log('create')
 
     // set up scene (light, ground, grid, sky, orbitControls)
@@ -112,32 +102,93 @@ export class MainScene extends Scene3D {
     let panels = new Panels(this)
     console.log(panels)
 
-    this.scene.add (group)
 
-    this.loadFont();
+
+    // panels
+    const { orbitControls } = await this.warpSpeed()
+
+    // const width = window.innerWidth
+    // const height = window.innerHeight
+
+    // Initialize the flat elements
+    this.ui = FLAT.init(this.renderer)
+
+    // Use this if you need events on the 2D elements.
+    // If you are using orbitControls, pass it to initEvents().
+    // This makes sure orbitControls is not messing with the mouse move.
+    FLAT.initEvents({ canvas: this.renderer.domElement, orbitControls })
+
+    // Call Flat.destroy() on scene restart or stop
+    // or simply add FLAT to the deconstructor
+    this.deconstructor.add(FLAT /* same effect as FLAT.destroy */, orbitControls)
+
+    // create text texture
+    const texture = new FLAT.TextTexture('Some Text')
+
+    // // texture in 2d space
+    // const sprite2d = new FLAT.TextSprite(texture)
+    // this.ui.scene.add(sprite2d)
+    // sprite2d.setPosition(sprite2d.width / 2 + 40, height - sprite2d.height / 2 - 40)
+
+    // texture in 3d space
+    let sprite3d = new FLAT.TextSprite(texture)
+    this.scene.add(sprite3d)
+    sprite3d.position.set(0, 2, -10)
+    sprite3d.setScale(0.05)
+
+        const texture2 = new FLAT.TextTexture('Blop blap')
+        sprite3d = new FLAT.TextSprite(texture2)
+        sprite3d.material.map.needsUpdate = true;
+
+    // texture on a plane
+    // const geometry = new THREE.PlaneGeometry(texture.width / 100, texture.height / 100)
+    // const material = new THREE.MeshLambertMaterial({
+    //   map: texture.clone(),
+    //   transparent: false,
+    //   side: THREE.DoubleSide
+    // })
+    // const plane = new THREE.Mesh(geometry, material)
+    // plane.position.set(0, 5, 0)
+    // plane.rotateX(-0.01)
+    // this.scene.add(plane)
+    // this.physics.add.existing(plane)
+    //
+    // // texture on a plane (with rainbow color background)
+    // const bitmap = await createImageBitmap(texture.image)
+    // const planeTexture = new FLAT.DrawTexture(texture.width, texture.height, ctx => {
+    //   // create rainbow gradient
+    //   const gradient = ctx.createLinearGradient(0, 0, 200, 200)
+    //   gradient.addColorStop(0, 'yellow')
+    //   gradient.addColorStop(0.5, 'red')
+    //   gradient.addColorStop(1, 'blue')
+    //   // fill with gradient
+    //   ctx.fillStyle = gradient
+    //   // draw the bitmap on top of the rainbow
+    //   ctx.fillRect(0, 0, texture.width, texture.height)
+    //   ctx.drawImage(bitmap, 0, 0)
+    // })
+    // const geo = new THREE.PlaneGeometry(texture.width / 100, texture.height / 100)
+    // const mat = new THREE.MeshLambertMaterial({
+    //   map: planeTexture,
+    //   transparent: false,
+    //   side: THREE.DoubleSide
+    // })
+    // const mesh = new THREE.Mesh(geo, mat)
+    // mesh.position.set(0, 10, 2)
+    // mesh.rotateX(-0.01)
+    // this.scene.add(mesh)
+    // this.physics.add.existing(mesh)
+
+
+
+
+
+
+
   }
 
-  loadFont() {
-    let ms = this
-    const loader = new FontLoader();
-    loader.load( 'fonts/' + fontName + '_' + fontWeight + '.typeface.json', function ( response ) {
-      font = response;
-      ms.refreshText();
-    } );
-  }
-
-  refreshText(){
-
-    group.remove( textMesh1 );
-
-
-    if ( ! text ) return;
-
-    this.createText();
-  }
   update() {
     let actions = play.actions
-    let ms = this
 
     if (this.ball != null){
       if (this.ball.position.y < 0){
@@ -154,8 +205,7 @@ export class MainScene extends Scene3D {
 
       if(batL != undefined){
         if (actions.l == 1  || actions.tapeLeft == 1){
-text = "left bat"
-ms.refreshText()
+
           if(batL.rotation.y <= Math.PI/6){
             batL.rotation.y += rotationSpeed
             batL.body.needUpdate = true
@@ -170,8 +220,6 @@ ms.refreshText()
 
       if(batR != undefined){
         if (actions.r == 1 || actions.tapeRight == 1){
-          text = "right bat"
-          ms.refreshText()
           if(batR.rotation.y >= -Math.PI/6){
             batR.rotation.y -= rotationSpeed
             batR.body.needUpdate = true
@@ -202,61 +250,15 @@ ms.refreshText()
     }
   }
 
-  createText() {
-    //https://threejs.org/examples/#webgl_geometry_text
-    let hover = 3
-    let mirror = false
-    let height = 2
-    textGeo = new TextGeometry( text, {
 
-      font: font,
-
-      size: 7,
-      height: height,
-      curveSegments: 4,
-
-      bevelThickness: 2,
-      bevelSize: 1.5,
-      bevelEnabled: true
-
-    } );
-
-    materials = [
-      new THREE.MeshPhongMaterial( { color: 0xffffff, flatShading: true } ), // front
-      new THREE.MeshPhongMaterial( { color: 0xffffff } ) // side
-    ];
-
-    textGeo.computeBoundingBox();
-
-    const centerOffset = - 0.5 * ( textGeo.boundingBox.max.x - textGeo.boundingBox.min.x );
-
-    textMesh1 = new THREE.Mesh( textGeo, materials );
-
-    textMesh1.position.x = centerOffset;
-    textMesh1.position.y = hover;
-    textMesh1.position.z = -10;
-
-    textMesh1.rotation.x = 0;
-    textMesh1.rotation.y = Math.PI * 2;
-
-    group.add( textMesh1 );
-
-    if ( mirror ) {
-
-      textMesh2 = new THREE.Mesh( textGeo, materials );
-
-      textMesh2.position.x = centerOffset;
-      textMesh2.position.y = - hover;
-      textMesh2.position.z = height;
-
-      textMesh2.rotation.x = Math.PI;
-      textMesh2.rotation.y = Math.PI * 2;
-
-      group.add( textMesh2 );
-
-    }
-
+  preRender() {
+    FLAT.preRender(this.renderer)
   }
+
+  postRender() {
+    FLAT.postRender(this.renderer, this.ui)
+  }
+
 
   async  loadText(text){
     // add 2d text
