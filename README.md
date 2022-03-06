@@ -28,6 +28,42 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 error with WebXR change ./node_modules/@enable3d/three-graphics/jsm/plugins/index.js
 
 ```
+
+INFO  Starting development server...
+98% after emitting CopyPlugin
+
+ERROR  Failed to compile with 1 error                                                                                                                                                        13:10:32
+
+error  in ./node_modules/three/examples/jsm/webxr/VRButton.js
+
+Module parse failed: Unexpected token (173:27)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+| 	}
+|
+> 	static xrSessionIsGranted = false;
+|
+| 	static registerSessionGrantedListener() {
+
+@ ./node_modules/@enable3d/three-graphics/jsm/plugins/webxr.js 7:0-61 25:25-33
+@ ./node_modules/@enable3d/three-graphics/jsm/plugins/index.js
+@ ./node_modules/enable3d/dist/scene3d.js
+@ ./node_modules/enable3d/dist/index.js
+@ ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/Flipball.vue?vue&type=script&lang=js&
+@ ./src/views/Flipball.vue?vue&type=script&lang=js&
+@ ./src/views/Flipball.vue
+@ ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/Home.vue?vue&type=script&lang=js&
+@ ./src/views/Home.vue?vue&type=script&lang=js&
+@ ./src/views/Home.vue
+@ ./src/router/index.js
+@ ./src/main.js
+@ multi (webpack)-dev-server/client?http://192.168.1.22:8080&sockPath=/sockjs-node (webpack)/hot/dev-server.js ./src/main.js
+
+
+```
+
+
+
+```
 /**
  * These Plugins are not included in the Core three-graphics package
  */

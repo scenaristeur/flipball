@@ -1,5 +1,5 @@
 <template>
-  <b-form-select v-model="selected" :options="options"></b-form-select>
+  <b-form-select v-model="table" :options="options"></b-form-select>
 </template>
 
 <script>
@@ -7,7 +7,7 @@ export default {
   name: 'TableSelector',
   data(){
     return{
-      selected: null,
+      table: null,
       options: [
         { value: null, text: 'Please select an option' },
         { value: 'test', text: 'test' },
@@ -15,6 +15,13 @@ export default {
         { value: 'modele', text: 'Modele' },
         { value: 'd', text: 'Create your own', disabled: true }
       ]
+    }
+  },
+  watch:{
+    table(){
+      this.$store.commit('setTable', this.table)
+      const event = new CustomEvent('tableChanged', { detail: this.table });
+      window.dispatchEvent(event);
     }
   }
 }

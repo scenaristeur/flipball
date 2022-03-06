@@ -70,8 +70,16 @@ export class MainScene extends Scene3D {
     // height = window.innerHeight
     this.renderer.setPixelRatio(1)
     this.renderer.setSize(window.innerWidth, window.innerHeight)
+
+
+
     let tableSelector = new TableSelector(this)
     console.log(tableSelector)
+
+
+    window.addEventListener('tableChanged', function (e) {
+      console.log(e.detail)
+    }, false);
     try{
       this.config = await import('@/tables/'+this.tablename+'/config.json');
       console.log(this.config)
