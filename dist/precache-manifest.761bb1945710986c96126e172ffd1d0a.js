@@ -2780,11 +2780,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/flipball/ambiant_buttons/29505.wav"
   },
   {
-    "revision": "35936dc1ebe222e0ee6f6a52b01a31ef",
-    "url": "/flipball/ambiant_buttons/_readme_and_license.txt"
-  },
-  {
-    "revision": "cdb554b10431d4c9f441",
+    "revision": "e8da11da8f8f4a5f298b",
     "url": "/flipball/css/app.5c9713c3.css"
   },
   {
@@ -2796,7 +2792,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/flipball/fonts/optimer_bold.typeface.json"
   },
   {
-    "revision": "a33f9ec6f938b824eb883f4f2974cf62",
+    "revision": "4228c69789d3e259f361683513bbfcdb",
     "url": "/flipball/index.html"
   },
   {
@@ -2804,8 +2800,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/flipball/js/about.5d488668.js"
   },
   {
-    "revision": "cdb554b10431d4c9f441",
-    "url": "/flipball/js/app.8d7237a0.js"
+    "revision": "e8da11da8f8f4a5f298b",
+    "url": "/flipball/js/app.294b65d5.js"
   },
   {
     "revision": "1a004483755215a35a72",

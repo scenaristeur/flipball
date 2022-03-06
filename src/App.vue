@@ -5,6 +5,7 @@
       <router-link to="/about">About</router-link>
     </div>
     <router-view/>
+    <small>flipball 0.0.1 - sounds</small>
   </div>
 </template>
 
