@@ -12,6 +12,8 @@
   "dependencies": {
     "@yandeu/keyboard": "^0.1.0",
     "@yandeu/tap": "^0.1.0",
+    "bootstrap": "~4.5.3",
+    "bootstrap-vue": "^2.21.2",
     "core-js": "^3.6.5",
     "enable3d": "^0.25.1",
     "register-service-worker": "^1.7.1",

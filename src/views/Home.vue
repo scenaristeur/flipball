@@ -1,6 +1,7 @@
 <template>
   <div class="home">
-    <Flipball />
+    <TableSelector />
+    <Flipball id="content" />
   </div>
 </template>
 
@@ -12,6 +13,7 @@ export default {
   name: 'Home',
   components: {
     'Flipball': () => import('@/views/Flipball'),
+    'TableSelector': () => import('@/views/TableSelector')
   },
 
 }
