@@ -1,2 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0b8ac1"],{"304b":function(n){n.exports=JSON.parse('{"launcher":{"position":{"x":0,"y":5,"z":0}},"ball_number":10}')}}]);
-//# sourceMappingURL=chunk-2d0b8ac1.2c64a792.js.map

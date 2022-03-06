@@ -40,23 +40,7 @@ group.position.z = -10;
 // const loader2 = new GLTFLoader();
 
 
-let flipper_parts = [
-  {
-    file: 'rubber',
-    name: "bat_left",
-    shape: "concave",
-    position: {x:-1.75, y:0.1, z:9.05},
-    scale: {x: .5, y: 1, z: .5}
-  },
-  {
-    file: 'rubber',
-    name: "bat_right",
-    shape: "concave",
-    position: {x:1.75, y: 0.55, z:9.05},
-    rotation: {x: 0, y: 0, z: Math.PI},
-    scale: {x: .5, y: 1, z: .5}
-  },
-]
+
 
 export class MainScene extends Scene3D {
   constructor() {
@@ -136,13 +120,23 @@ export class MainScene extends Scene3D {
           let tubes = new Tubes(scene)
           console.log(tubes)
         }
-        if(flipper_parts != undefined){
-          await scene.loadParts(scene, flipper_parts)
+        if(scene.config.flipper_parts != undefined){
+          await scene.loadParts(scene, scene.config.flipper_parts)
         }
         if(scene.config.ball_number != undefined){
           for (let i=0; i < scene.config.ball_number; i++){
             let b = new Ball(scene)
             b.name = 'ball_'+i
+          }
+        }
+
+        if (scene.config.type == "marble"){
+          for (let x = "-10"; x < 10; x++){
+            for (let z = "-10"; z < 10; z++){
+
+              scene.add.box({x: x, y: 1, z:z, collisionFlags: 4})
+
+            }
           }
         }
 

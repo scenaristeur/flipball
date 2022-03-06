@@ -11,6 +11,23 @@
     },
     "color": "#ff96fc"
   },
+  "flipper_parts": [
+    {
+      "file": "rubber",
+      "name": "bat_left",
+      "shape": "concave",
+      "position": {"x":"-1.75", "y":0.1, "z":9.05},
+      "scale": {"x": ".5", "y": 1, "z": ".5"}
+    },
+    {
+      "file": "rubber",
+      "name": "bat_right",
+      "shape": "concave",
+      "position": {"x":1.75, "y": 0.55, "z":9.05},
+      "rotation": {"x": 0, "y": 0, "z": 3.14},
+      "scale": {"x": 0.5, "y": 1, "z": 0.5}
+    }
+  ],
   "walls": [
     {
       "name": "bottom_left_wall",
