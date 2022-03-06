@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "bac7836f42cfa13aa10e",
+    "revision": "5670f5602e4517d58a27",
     "url": "/flipball/css/app.5c9713c3.css"
   },
   {
@@ -12,7 +12,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/flipball/fonts/optimer_bold.typeface.json"
   },
   {
-    "revision": "d341e2d1f545a57085baad7ae11d6832",
+    "revision": "aca925943584274d4a74bb38f4fd4e0a",
     "url": "/flipball/index.html"
   },
   {
@@ -20,20 +20,20 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/flipball/js/about.2e1998ca.js"
   },
   {
-    "revision": "bac7836f42cfa13aa10e",
-    "url": "/flipball/js/app.4317ee07.js"
+    "revision": "5670f5602e4517d58a27",
+    "url": "/flipball/js/app.e54596f9.js"
   },
   {
-    "revision": "47c676650b212d577476",
-    "url": "/flipball/js/chunk-12212738.07824dbb.js"
+    "revision": "36b7f1a53d60cfa16004",
+    "url": "/flipball/js/chunk-12212738.3e014a56.js"
   },
   {
     "revision": "3ee8a435e662418f2702",
     "url": "/flipball/js/chunk-2d0b8ac1.f27fedc8.js"
   },
   {
-    "revision": "00d530c348873aca7f80",
-    "url": "/flipball/js/chunk-2d0dea75.5b00ae6a.js"
+    "revision": "5db9f1893fa4ac585342",
+    "url": "/flipball/js/chunk-2d0dea75.5fbacb56.js"
   },
   {
     "revision": "d51b3ac66296cbb67cd0",
