@@ -22,7 +22,7 @@ export class Ball  {
     // ball.body.setCcdMotionThreshold(ccd_threshold_ball)
     // ball.body.setCcdSweptSphereRadius(ccd_radius_ball)
     // ctx.ball.body.setBounciness(1)
-    console.log("new Ball", ctx.ball)
+  //  console.log("new Ball", ctx.ball)
   }
 }
 

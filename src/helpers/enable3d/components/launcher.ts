@@ -3,6 +3,7 @@ export class Launcher  {
   constructor( scene ) {
   console.log("launcher")
   this.buildLauncher(scene)
+  this.scene = scene
   }
 
   buildLauncher(ctx){
@@ -69,7 +70,8 @@ export class Launcher  {
   }
 
   launch(){
-    let force = 5*Math.random()
+    let force = this.scene.config.launcher.force || 5
+    force = force*Math.random()
     this.launcher_interior.body.applyForceZ(-force)
   }
 

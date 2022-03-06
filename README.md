@@ -82,3 +82,7 @@ export { Loaders, Lights, Factories, HeightMap, WarpSpeed, Mixers, Misc, Texture
 //# sourceMappingURL=index.js.map
 
 ```
+# freesound bank
+- https://freesound.org/people/michorvath/sounds/269718/
+- sound packs https://freesound.org/browse/packs/?order=-num_sounds&page=2#pack
+- notes https://tonejs.github.io/audio/salamander/A3.mp3
