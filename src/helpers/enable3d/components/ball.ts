@@ -2,8 +2,8 @@ export class Ball  {
   constructor( ctx ) {
     console.log("ball")
 
-    if (ctx.ball == null){
-      console.log(ctx.config.launcher)
+    if (ctx.ball == null || ctx.config.ball_number != undefined){
+    //  console.log(ctx.config.launcher)
       ctx.ball = ctx.physics.add.sphere(
         {
           x: Number(ctx.config.launcher.position.x),//9,//7,//-1.7,

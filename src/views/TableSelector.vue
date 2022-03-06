@@ -9,9 +9,9 @@ export default {
     return{
       table: null,
       options: [
-        { value: null, text: 'Please select an option' },
-        { value: 'test', text: 'test' },
-        { value: 'marble', text: 'marble' },
+        { value: null, text: 'Please select a table' },
+        { value: 'flipball', text: 'Flipball' },
+        { value: 'marble', text: 'Marble' },
         { value: 'modele', text: 'Modele' },
         { value: 'd', text: 'Create your own', disabled: true }
       ]

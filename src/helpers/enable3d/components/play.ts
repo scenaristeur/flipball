@@ -9,38 +9,31 @@ export class Play  {
   constructor( ) {
     console.log("play")
     this.actions = {l: 0, r: 0, u: 0, d: 0 }
-    // let content = document.getElementById("content")
     window.addEventListener("keydown", function(e) {
       if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
         e.preventDefault();
       }
     }, false);
-    // console.log(content)
 
     tap.on.down(({ position, event }) => {
       let dataEngine = event.target.getAttribute("data-engine")
-      console.log(dataEngine)
       if (dataEngine != null && dataEngine.startsWith('three.js')){
-      //console.log('down', position, event)
-      event.preventDefault()
-      let content = event.target
-      let w = content.offsetWidth
-      let h = content.offsetHeight
-      console.log(content, w, h)
-
-      if (position.y < h/2){
-        console.log("top")
-        this.actions.tapeUp = 1
-      }else if(position.y > h/2){
-        if(position.x < w /2){
-          console.log("left")
-          this.actions.tapeLeft = 1
-        }else{
-          console.log("right")
-          this.actions.tapeRight = 1
+        //console.log('down', position, event)
+        event.preventDefault()
+        let content = event.target
+        let w = content.offsetWidth
+        let h = content.offsetHeight
+        if (position.y < h/2){
+          console.log("top")
+          this.actions.tapeUp = 1
+        }else if(position.y > h/2){
+          if(position.x < w /2){
+            this.actions.tapeLeft = 1
+          }else{
+            this.actions.tapeRight = 1
+          }
         }
       }
-    }
 
     })
 

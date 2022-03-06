@@ -1,3 +1,10 @@
 {
-  
+  "launcher": {
+    "position": {
+      "x": 0,
+      "y": 5,
+      "z": 0
+    }
+  },
+  "ball_number": 10
 }

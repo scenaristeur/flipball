@@ -11,7 +11,7 @@ import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js';
 // import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 
-import { TableSelector } from './components/tableSelector.ts'
+// import { TableSelector } from './components/tableSelector.ts'
 import { Walls } from './components/walls.ts'
 import { Launcher } from './components/launcher.ts'
 import { Obstacles } from './components/obstacles.ts'
@@ -73,20 +73,7 @@ export class MainScene extends Scene3D {
 
 
 
-    let tableSelector = new TableSelector(this)
-    console.log(tableSelector)
 
-
-    window.addEventListener('tableChanged', function (e) {
-      console.log(e.detail)
-    }, false);
-    try{
-      this.config = await import('@/tables/'+this.tablename+'/config.json');
-      console.log(this.config)
-    }catch(e){
-      console.log(e)
-      alert( "I can't open '"+this.tablename+"/config.json' in the tables folder !")
-    }
     if (statistiques){
       document.body.appendChild(stats.dom)
     }
@@ -97,13 +84,7 @@ export class MainScene extends Scene3D {
 
   async preload() {
     console.log('preload')
-    let walls = new Walls(this)
-    this.launcher = new Launcher(this)
-    let obstacles = new Obstacles(this)
-    let tubes = new Tubes(this)
 
-    console.log(walls, obstacles, tubes)
-    await this.loadParts(this, flipper_parts)
     // loadParts(this, flipper_parts)
   }
 
@@ -112,7 +93,7 @@ export class MainScene extends Scene3D {
     console.log('create')
 
     // set up scene (light, ground, grid, sky, orbitControls)
-    this.warpSpeed()
+    //this.warpSpeed()
 
     this.debug = debug
     if (debug == true ){
@@ -125,6 +106,54 @@ export class MainScene extends Scene3D {
     this.scene.add (group)
 
     this.loadFont();
+
+    let scene = this
+
+    window.addEventListener('tableChanged', async function (e) {
+      scene.tablename = e.detail
+      // console.log(this.table)
+      // let tableSelector = new TableSelector(this)
+      // console.log(tableSelector)
+      try{
+        scene.warpSpeed()
+        scene.config = await import('@/tables/'+scene.tablename+'/config.json');
+        console.log(scene.config)
+
+
+        if (scene.config.walls != undefined){
+          let walls = new Walls(scene)
+          console.log(walls)
+        }
+        if (scene.config.launcher != undefined){
+          scene.launcher = new Launcher(scene)
+
+        }
+        if (scene.config.obstacles != undefined){
+          let obstacles = new Obstacles(scene)
+          console.log(obstacles)
+        }
+        if (scene.config.tubes != undefined){
+          let tubes = new Tubes(scene)
+          console.log(tubes)
+        }
+        if(flipper_parts != undefined){
+          await scene.loadParts(scene, flipper_parts)
+        }
+        if(scene.config.ball_number != undefined){
+          for (let i=0; i < scene.config.ball_number; i++){
+            let b = new Ball(scene)
+            b.name = 'ball_'+i
+          }
+        }
+
+      }catch(e){
+        console.log(e)
+        alert( "I can't open '"+scene.tablename+"/config.json' in the tables folder !")
+      }
+    }, false);
+
+
+
   }
 
   loadFont() {
