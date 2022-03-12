@@ -28,7 +28,7 @@ const stats = Stats()
 let play = new Play()
 let ready = false
 let base_url = process.env.BASE_URL
-const rotationSpeed= .3
+const rotationSpeed= .2
 const loader = new STLLoader()
 
 let text = 'three.js',
@@ -97,7 +97,7 @@ export class MainScene extends Scene3D {
     if (debug == true ){
       this.physics.debug?.enable()     // enable physics debug
     }
-    this.camera.position.set(0, 14, 20)
+    this.camera.position.set(0, 14, 30)
     let panels = new Panels(this)
     console.log(panels)
 
@@ -109,6 +109,7 @@ export class MainScene extends Scene3D {
 
     window.addEventListener('tableChanged', async function (e) {
       scene.tablename = e.detail
+
       // console.log(this.table)
       // let tableSelector = new TableSelector(this)
       // console.log(tableSelector)

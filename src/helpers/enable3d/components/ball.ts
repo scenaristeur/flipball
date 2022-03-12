@@ -1,6 +1,8 @@
 export class Ball  {
   constructor( ctx ) {
     console.log("ball")
+    let ccd_threshold_ball = 1
+    let ccd_radius_ball = 0.2
 
     if (ctx.ball == null || ctx.config.ball_number != undefined){
     //  console.log(ctx.config.launcher)
@@ -10,7 +12,7 @@ export class Ball  {
           y: Number(ctx.config.launcher.position.y)+.05,
           z: Number(ctx.config.launcher.position.z)-2,//-8,
           radius : 0.3,
-          mass: .4,  //0.3,
+          mass: 0.4,  //0.3,
           name: "ball"
           // collisionFlags: 0
         },
@@ -19,8 +21,8 @@ export class Ball  {
       }
     )
     // motion clamping https://enable3d.io/docs.html#collisions
-    // ball.body.setCcdMotionThreshold(ccd_threshold_ball)
-    // ball.body.setCcdSweptSphereRadius(ccd_radius_ball)
+    ctx.ball.body.setCcdMotionThreshold(ccd_threshold_ball)
+    ctx.ball.body.setCcdSweptSphereRadius(ccd_radius_ball)
     // ctx.ball.body.setBounciness(1)
   //  console.log("new Ball", ctx.ball)
   }
