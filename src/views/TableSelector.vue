@@ -11,6 +11,7 @@ export default {
       options: [
         // { value: null, text: 'Please select a table' },
         { value: 'flipball', text: 'Flipball' },
+        { value: 'space', text: 'Space' },
         { value: 'marble', text: 'Marble' , disabled:true},
         { value: 'modele', text: 'Modele' , disabled:true},
         { value: 'd', text: 'Create your own', disabled: true }

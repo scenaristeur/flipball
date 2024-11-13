@@ -30,7 +30,7 @@ const stats = Stats();
 let play = new Play();
 let ready = false;
 let base_url = process.env.BASE_URL;
-let rotationSpeed= .4
+let rotationSpeed= .3
 const loader = new STLLoader();
 
 let text = "three.js",
