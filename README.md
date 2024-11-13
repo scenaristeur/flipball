@@ -1,5 +1,10 @@
 # flipball
 
+nodejs 16
+
+```nvm use 16```
+
+
 ## Project setup
 ```
 npm install
@@ -26,6 +31,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 # necessary change
 
 error with WebXR change ./node_modules/@enable3d/three-graphics/jsm/plugins/index.js
+--> comment webXR plugin ligne 12 & 15
 
 ```
 

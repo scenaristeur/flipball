@@ -9,14 +9,17 @@ export default {
     return{
       table: null,
       options: [
-        { value: null, text: 'Please select a table' },
+        // { value: null, text: 'Please select a table' },
         { value: 'flipball', text: 'Flipball' },
-        { value: 'marble', text: 'Marble' },
-        { value: 'modele', text: 'Modele' },
+        { value: 'marble', text: 'Marble' , disabled:true},
+        { value: 'modele', text: 'Modele' , disabled:true},
         { value: 'd', text: 'Create your own', disabled: true }
       ]
     }
   },
+  // mounted(){
+  //   this.table = this.options[1].value
+  // },
   watch:{
     table(){
       this.$store.commit('setTable', this.table)
